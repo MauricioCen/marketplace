@@ -15,4 +15,4 @@ jobs:
         with:
           bundler-cache: true
       - name: Run linter
-        run: rubocop
+        run: bundle exec rake rubocop
