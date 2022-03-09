@@ -2,6 +2,12 @@
 
 class CategoriesController < ApplicationController
   def index
-    head :ok
+    categories = Category.all
+    render json: categories
+  end
+
+  def show
+    category = Category.find(params[:id])
+    render json: category
   end
 end
