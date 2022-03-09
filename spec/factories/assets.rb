@@ -11,6 +11,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Asset < ApplicationRecord
-  belongs_to :product
+FactoryBot.define do
+  factory :asset do
+    name { FFaker::Lorem.word }
+    url { FFaker::Internet.http_url }
+    product
+  end
 end
