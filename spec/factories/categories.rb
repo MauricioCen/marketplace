@@ -2,15 +2,15 @@
 
 # == Schema Information
 #
-# Table name: assets
+# Table name: categories
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  url        :text
-#  product_id :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Asset < ApplicationRecord
-  belongs_to :product
+FactoryBot.define do
+  factory :category do
+    name { FFaker::Lorem.word }
+  end
 end

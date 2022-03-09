@@ -14,7 +14,13 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-class Product < ApplicationRecord
-  belongs_to :category
-  has_many :assets, dependent: :destroy
+FactoryBot.define do
+  factory :product do
+    name { FFaker::Lorem.word }
+    description { FFaker::Lorem.paragraph }
+    price { FFaker::Number.decimal }
+    discount { 0 }
+    stock { 10 }
+    category
+  end
 end

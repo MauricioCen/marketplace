@@ -14,8 +14,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_211627) do
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.text "url"
+    t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_assets_on_product_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -30,10 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_211627) do
     t.float "price"
     t.float "discount", default: 0.0
     t.integer "stock", default: 0
-    t.integer "category_id_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id_id"], name: "index_products_on_category_id_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,5 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_211627) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "products", "category_ids"
+  add_foreign_key "assets", "products"
+  add_foreign_key "products", "categories"
 end
