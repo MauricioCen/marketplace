@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_211627) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.float "price"
+    t.float "price", default: 0.0
     t.float "discount", default: 0.0
     t.integer "stock", default: 0
     t.integer "category_id", null: false
