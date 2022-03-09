@@ -7,7 +7,7 @@
 #  id          :integer          not null, primary key
 #  name        :string
 #  description :text
-#  price       :float
+#  price       :float            default(0.0)
 #  discount    :float            default(0.0)
 #  stock       :integer          default(0)
 #  category_id :integer          not null
