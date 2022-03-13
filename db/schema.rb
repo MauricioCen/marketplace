@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_08_211627) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_12_184744) do
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.text "url"
@@ -18,6 +18,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_211627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_assets_on_product_id"
+  end
+
+  create_table "banners", force: :cascade do |t|
+    t.string "name"
+    t.text "link"
+    t.text "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
