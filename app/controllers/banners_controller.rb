@@ -31,10 +31,10 @@ class BannersController < ApplicationController
   private
 
   def create_params
-    params.require(:banner).permit(:name)
+    params.require(:banner).permit(:name, :link, :url)
   end
 
   def update_params
-    params.require(:banner).permit(:name)
+    params.require(:banner).permit(:name, :link, :url)
   end
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Banners', type: :request do
+RSpec.describe 'banners', type: :request do
   describe 'GET /banners' do
     let!(:banners) { create_list(:banner, 10) }
 
@@ -14,7 +14,7 @@ RSpec.describe 'Banners', type: :request do
     end
   end
 
-  describe 'GET /Banners' do
+  describe 'GET /banners' do
     let!(:banner) { create(:banner) }
 
     it 'should return banner' do
@@ -25,12 +25,14 @@ RSpec.describe 'Banners', type: :request do
     end
   end
 
-  describe 'POST /Banners' do
+  describe 'POST /banners' do
     it 'should create banner' do
       body = { banner: { name: FFaker::Lorem.word } }
       post '/banners', params: body
       payload = JSON.parse(response.body)
       expect(payload['name']).to eq(body[:banner][:name])
+      expect(payload['link']).to eq(body[:banner][:link])
+      expect(payload['url']).to eq(body[:banner][:url])
       expect(response).to have_http_status(:created)
     end
   end
@@ -38,15 +40,17 @@ RSpec.describe 'Banners', type: :request do
   describe 'PUT /banners' do
     let!(:banner) { create(:banner) }
     it 'should update banner' do
-      body = { banner: { name: FFaker::Lorem.word } }
+      body = { banner: { name: FFaker::Lorem.word, link: FFaker::Internet.http_url, url: FFaker::Internet.http_url } }
       put "/banners/#{banner.id}", params: body
       payload = JSON.parse(response.body)
       expect(payload['name']).to eq(body[:banner][:name])
+      expect(payload['link']).to eq(body[:banner][:link])
+      expect(payload['url']).to eq(body[:banner][:url])
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe 'DELETE /banner/:id' do
+  describe 'DELETE /banners/:id' do
     let!(:banner) { create(:banner) }
     it 'should delete banner' do
       delete "/banners/#{banner.id}"

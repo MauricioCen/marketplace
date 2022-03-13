@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  describe 'GET/users' do
+  describe 'GET /users' do
     let!(:users) { create_list(:user, 10) }
 
     it 'should return status code 200' do
@@ -24,7 +24,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'POST /users/' do
+  describe 'POST /users' do
     let!(:user) { create(:user) }
     it 'should create user' do
       body = { user: { name: FFaker::Name.first_name, last_name: FFaker::Name.last_name,
