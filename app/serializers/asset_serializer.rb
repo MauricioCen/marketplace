@@ -2,14 +2,16 @@
 
 # == Schema Information
 #
-# Table name: categories
+# Table name: assets
 #
 #  id         :integer          not null, primary key
 #  name       :string
+#  url        :text
+#  product_id :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class CategorySerializer < ApplicationSerializer
-  attributes :id, :name
-  has_many :products
+class AssetSerializer < ApplicationSerializer
+  attributes :id, :name, :url
+  belongs_to :product
 end
