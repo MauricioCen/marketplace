@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users
   resources :banners
   resources :assets
+  resources :products
 end
