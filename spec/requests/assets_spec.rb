@@ -38,7 +38,7 @@ RSpec.describe 'assets', type: :request do
     end
   end
 
-  describe 'PUT /assets' do
+  describe 'PUT /assets/:id' do
     let!(:asset) { create(:asset) }
     let!(:product) { create(:product) }
     it 'should update asset' do
