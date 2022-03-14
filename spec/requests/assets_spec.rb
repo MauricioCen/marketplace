@@ -14,7 +14,7 @@ RSpec.describe 'assets', type: :request do
     end
   end
 
-  describe 'GET /assets' do
+  describe 'GET /assets/:id' do
     let!(:asset) { create(:asset) }
 
     it 'should return asset' do
