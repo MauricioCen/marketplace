@@ -15,6 +15,6 @@
 #  updated_at  :datetime         not null
 #
 class ProductSerializer < ApplicationSerializer
-  attributes :id, :name, :description, :price, :discount, :stock
+  attributes :id, :name, :description, :price, :discount, :stock, :slug
   belongs_to :category
 end

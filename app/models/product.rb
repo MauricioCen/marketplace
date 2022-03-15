@@ -15,6 +15,8 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
+  extend FriendlyId
   belongs_to :category
   has_many :assets, dependent: :destroy
+  friendly_id :name, use: :slugged
 end

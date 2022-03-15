@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_12_184744) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_15_195856) do
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.text "url"
@@ -43,7 +43,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_184744) do
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["slug"], name: "index_products_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

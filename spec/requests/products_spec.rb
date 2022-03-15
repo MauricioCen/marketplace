@@ -25,6 +25,16 @@ RSpec.describe 'Products', type: :request do
     end
   end
 
+  describe 'GET /products/:slug' do
+    let!(:product) { create(:product) }
+    it 'should return product' do
+      get "/products/#{product.slug}"
+      payload = JSON.parse(response.body)
+      expect(payload['slug']).to eq(product.slug)
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe 'POST /products' do
     let!(:category) { create(:category) }
     it 'should create products' do
