@@ -7,9 +7,9 @@ RSpec.describe 'assets', type: :request do
     let!(:assets) { create_list(:asset, 10) }
 
     it 'should return status code 200' do
-      get '/assets'
+      get '/assets', params: { page: 1, size: 5 }
       payload = JSON.parse(response.body)
-      expect(payload.size).to eq(10)
+      expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
   end

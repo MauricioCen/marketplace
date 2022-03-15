@@ -2,7 +2,7 @@
 
 class ProductsController < ApplicationController
   def index
-    products = Product.all
+    _pagy, products = pagy(Product.all, items: params[:size])
     render json: products
   end
 
