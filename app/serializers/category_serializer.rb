@@ -10,6 +10,6 @@
 #  updated_at :datetime         not null
 #
 class CategorySerializer < ApplicationSerializer
-  attributes :id, :name
+  attributes :id, :name, :slug
   has_many :products
 end
