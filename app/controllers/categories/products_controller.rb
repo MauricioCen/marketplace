@@ -3,7 +3,7 @@
 module Categories
   class ProductsController < ApplicationController
     def index
-      products = Product.where(category_id: params[:category_id])
+      _pagy, products = pagy(Product.where(category_id: params[:category_id]), items: params[:size])
       render json: products
     end
   end

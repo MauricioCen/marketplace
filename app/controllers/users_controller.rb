@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   def index
-    users = User.all
+    _pagy, users = pagy(User.all, items: params[:size])
     render json: users
   end
 

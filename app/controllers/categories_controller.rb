@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   def index
-    categories = Category.all
+    _pagy, categories = pagy(Category.all, items: params[:size])
     render json: categories
   end
 

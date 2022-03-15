@@ -2,7 +2,7 @@
 
 class AssetsController < ApplicationController
   def index
-    assets = Asset.all
+    _pagy, assets = pagy(Asset.all, items: params[:size])
     render json: assets
   end
 

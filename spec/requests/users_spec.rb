@@ -7,9 +7,9 @@ RSpec.describe 'Users', type: :request do
     let!(:users) { create_list(:user, 10) }
 
     it 'should return status code 200' do
-      get '/users'
+      get '/users', params: { page: 1, size: 5 }
       payload = JSON.parse(response.body)
-      expect(payload.size).to eq(10)
+      expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
   end

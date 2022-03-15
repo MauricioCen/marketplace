@@ -7,6 +7,7 @@ ruby '2.7.2'
 
 gem 'active_model_serializers', '~> 0.10.13'
 gem 'bootsnap', require: false
+gem 'pagy', '~> 5.10'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 gem 'rubocop', '~> 1.25', require: false
