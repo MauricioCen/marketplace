@@ -10,5 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Category < ApplicationRecord
+  extend FriendlyId
   has_many :products, dependent: :destroy
+  friendly_id :name, use: :slugged
 end

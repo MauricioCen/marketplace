@@ -24,6 +24,16 @@ RSpec.describe 'Categories', type: :request do
     end
   end
 
+  describe 'GET /categories/:slug' do
+    let!(:category) { create(:category) }
+    it 'should return category' do
+      get "/categories/#{category.slug}"
+      payload = JSON.parse(response.body)
+      expect(payload['slug']).to eq(category.slug)
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe 'POST /categories' do
     it 'should create category' do
       body = { category: { name: FFaker::Lorem.word } }
