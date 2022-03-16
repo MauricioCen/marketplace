@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2022_03_16_205744) do
   create_table "addresses", force: :cascade do |t|
     t.string "name"
-    t.string "first_name"
+    t.string "first_address"
     t.string "int_number"
     t.string "ext_number"
     t.string "zip_code"
