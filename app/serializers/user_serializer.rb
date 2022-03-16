@@ -13,4 +13,5 @@
 #
 class UserSerializer < ApplicationSerializer
   attributes :id, :name, :last_name, :email
+  has_many :addresses
 end
