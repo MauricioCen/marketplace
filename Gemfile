@@ -11,8 +11,10 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'pagy', '~> 5.10'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
+gem 'rails_admin', '~> 3.0.rc4'
 gem 'rubocop', '~> 1.25', require: false
 gem 'rubocop-rails', '~> 2.13', require: false
+gem 'sassc-rails', '~> 2.1'
 gem 'sqlite3', '~> 1.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
