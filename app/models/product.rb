@@ -13,6 +13,7 @@
 #  category_id :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  slug        :string
 #
 class Product < ApplicationRecord
   extend FriendlyId

@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_15_202817) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_16_205744) do
+  create_table "addresses", force: :cascade do |t|
+    t.string "name"
+    t.string "first_address"
+    t.string "int_number"
+    t.string "ext_number"
+    t.string "zip_code"
+    t.string "references"
+    t.string "city"
+    t.string "state"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.text "url"
@@ -58,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_202817) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "assets", "products"
   add_foreign_key "products", "categories"
 end
