@@ -20,13 +20,13 @@
 FactoryBot.define do
   factory :address do
     name { FFaker::Lorem.word }
-    first_name { FFaker::Lorem.word }
+    first_address { FFaker::Lorem.word }
     int_number { FFaker::Lorem.word }
     ext_number { FFaker::Lorem.word }
     zip_code { FFaker::Lorem.word }
     references { FFaker::Lorem.paragraph }
     city { FFaker::Address.city }
-    sate { FFaker::Lorem.word }
+    state { FFaker::Lorem.word }
     user
   end
 end
