@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   end
   resources :banners, only: %i[index]
   resources :products, only: %i[index show]
-  resources :addresses, only: %i[index show create update destroy]
+  resources :addresses
 end
