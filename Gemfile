@@ -7,6 +7,7 @@ ruby '2.7.2'
 
 gem 'active_model_serializers', '~> 0.10.13'
 gem 'bootsnap', require: false
+gem 'devise', '~> 4.8'
 gem 'friendly_id', '~> 5.4.0'
 gem 'pagy', '~> 5.10'
 gem 'puma', '~> 5.0'
