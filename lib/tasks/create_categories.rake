@@ -3,7 +3,9 @@
 desc 'Create categories from excel'
 task create_categories: :environment do
   xlsx = Roo::Spreadsheet.open('lib/tasks/files/Productos.xlsx')
-  xlsx.sheet('Categorias').drop(1).each do |row|
-    Category.create!(name: row.first)
+  xlsx.sheet('Categorias').each(name: 'Nombre') do |hash|
+    next if hash[:name] == 'Nombre'
+
+    Category.create!(hash)
   end
 end
