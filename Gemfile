@@ -14,6 +14,7 @@ gem 'pg', '~> 1.3'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 gem 'rails_admin', '~> 3.0.rc4'
+gem 'roo', '~> 2.9'
 gem 'rubocop', '~> 1.25', require: false
 gem 'rubocop-rails', '~> 2.13', require: false
 gem 'sassc-rails', '~> 2.1'
