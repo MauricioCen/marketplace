@@ -21,6 +21,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'byebug', '~> 11.1'
+  gem 'dotenv-rails', '~> 2.7'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'ffaker', '~> 2.20'
   gem 'rspec-rails', '~> 5.1'
@@ -31,7 +32,5 @@ group :test do
 end
 
 group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
   gem 'annotate', '~> 3.2'
 end

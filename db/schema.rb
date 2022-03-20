@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_03_19_170632) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string "name"
     t.string "first_address"
@@ -20,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_19_170632) do
     t.string "references"
     t.string "city"
     t.string "state"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
@@ -29,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_19_170632) do
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.text "url"
-    t.integer "product_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_assets_on_product_id"
@@ -57,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_19_170632) do
     t.float "price", default: 0.0
     t.float "discount", default: 0.0
     t.integer "stock", default: 0
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
@@ -73,8 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_19_170632) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
