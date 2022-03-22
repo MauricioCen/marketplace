@@ -4,7 +4,7 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           not null, primary key
 #  name                   :string
 #  last_name              :string
 #  created_at             :datetime         not null
@@ -18,4 +18,5 @@
 class UserSerializer < ApplicationSerializer
   attributes :id, :name, :last_name, :email
   has_many :addresses
+  has_many :contacts
 end
