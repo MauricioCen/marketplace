@@ -4,7 +4,7 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           not null, primary key
 #  name                   :string
 #  last_name              :string
 #  created_at             :datetime         not null
@@ -21,4 +21,5 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
   has_many :addresses, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 end

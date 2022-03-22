@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :banners, only: %i[index]
   resources :products, only: %i[index show]
   resources :addresses
+  resources :contacts
 end
