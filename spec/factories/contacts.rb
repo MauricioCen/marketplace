@@ -17,7 +17,7 @@ FactoryBot.define do
   factory :contact do
     name { FFaker::Name.first_name }
     last_name { FFaker::Name.last_name }
-    phone_number { FFaker::Lorem.word }
+    phone_number { FFaker::PhoneNumber.phone_number}
     secret_key { FFaker::Lorem.word }
     user
   end

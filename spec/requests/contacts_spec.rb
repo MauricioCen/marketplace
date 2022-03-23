@@ -27,7 +27,7 @@ RSpec.describe 'contacts', type: :request do
   describe 'POST /contacts' do
     let!(:user) { create(:user) }
     it 'should create contact' do
-      body = { contact: { name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, phone_number: FFaker::Lorem.word,
+      body = { contact: { name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, phone_number: FFaker::PhoneNumber.phone_number,
                           secret_key: FFaker::Lorem.word, user_id: user.id } }
       post '/contacts', params: body
       payload = JSON.parse(response.body)
@@ -44,7 +44,7 @@ RSpec.describe 'contacts', type: :request do
     let!(:contact) { create(:contact) }
     let!(:user) { create(:user) }
     it 'should update contact' do
-      body = { contact: { name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, phone_number: FFaker::Lorem.word,
+      body = { contact: { name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, phone_number: FFaker::PhoneNumber.phone_number,
                           secret_key: FFaker::Lorem.word, user_id: user.id } }
       put "/contacts/#{contact.id}", params: body
       payload = JSON.parse(response.body)

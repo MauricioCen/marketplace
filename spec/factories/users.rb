@@ -22,6 +22,6 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     email { FFaker::Internet.unique.email }
     password { FFaker::Internet.password }
-    phone_number { FFaker::Lorem.word }
+    phone_number { FFaker::PhoneNumber.phone_number }
   end
 end
