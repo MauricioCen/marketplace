@@ -18,6 +18,6 @@
 #  updated_at    :datetime         not null
 #
 class AddressSerializer < ApplicationSerializer
-  attributes :name, :first_address, :int_number, :ext_number, :zip_code, :references, :city, :state
+  attributes :id, :name, :first_address, :int_number, :ext_number, :zip_code, :references, :city, :state
   belongs_to :user
 end
