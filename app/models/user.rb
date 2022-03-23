@@ -14,6 +14,7 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  phone_number           :string
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:

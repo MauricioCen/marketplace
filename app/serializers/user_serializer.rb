@@ -14,9 +14,10 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  phone_number           :string
 #
 class UserSerializer < ApplicationSerializer
-  attributes :id, :name, :last_name, :email
+  attributes :id, :name, :last_name, :email, :phone_number
   has_many :addresses
   has_many :contacts
 end

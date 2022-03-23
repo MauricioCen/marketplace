@@ -14,6 +14,7 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  phone_number           :string
 #
 FactoryBot.define do
   factory :user do
@@ -21,5 +22,6 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     email { FFaker::Internet.unique.email }
     password { FFaker::Internet.password }
+    phone_number { FFaker::PhoneNumber.phone_number }
   end
 end
