@@ -5,11 +5,19 @@ require 'rails_helper'
 RSpec.describe 'contacts', type: :request do
   describe 'GET /contacts' do
     let!(:contacts) { create_list(:contact, 10) }
-
+    let!(:contact_one) { create(:contact, name: 'Cristian', last_name: 'Cen') }
+    let!(:contact_two) { create(:contact, name: 'Cristiana', last_name: 'Cen') }
     it 'should return status code 200' do
       get '/contacts', params: { page: 1, size: 5 }
       payload = JSON.parse(response.body)
       expect(payload.size).to eq(5)
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'should return 2 contacts' do
+      get '/contacts', params: { q: 'Crist' }
+      payload = JSON.parse(response.body)
+      expect(payload.size).to eq(2)
       expect(response).to have_http_status(:ok)
     end
   end
