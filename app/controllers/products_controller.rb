@@ -2,7 +2,13 @@
 
 class ProductsController < ApplicationController
   def index
-    _pagy, products = pagy(Product.all, items: params[:size])
+    query = params[:q]
+    products = if query.blank?
+                 Product.all
+               else
+                 Product.search(query)
+               end
+    _pagy, products = pagy(products, items: params[:size])
     render json: products
   end
 

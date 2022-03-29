@@ -17,7 +17,9 @@
 #
 class Product < ApplicationRecord
   extend FriendlyId
+  include PgSearch::Model
   belongs_to :category
   has_many :assets, dependent: :destroy
   friendly_id :name, use: :slugged
+  pg_search_scope :search, against: %i[name description]
 end
