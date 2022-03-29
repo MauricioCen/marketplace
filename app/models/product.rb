@@ -21,5 +21,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :assets, dependent: :destroy
   friendly_id :name, use: :slugged
-  pg_search_scope :search, against: %i[name description]
+  pg_search_scope :search, against: %i[name description], using: {
+    tsearch: { prefix: true }
+  }
 end

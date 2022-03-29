@@ -14,5 +14,9 @@
 #  updated_at   :datetime         not null
 #
 class Contact < ApplicationRecord
+  include PgSearch::Model
   belongs_to :user
+  pg_search_scope :search, against: %i[name last_name], using: {
+    tsearch: { prefix: true }
+  }
 end

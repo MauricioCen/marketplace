@@ -2,7 +2,14 @@
 
 class ContactsController < ApplicationController
   def index
-    _pagy, contacts = pagy(Contact.all, items: params[:size])
+    query = params[:q]
+    contacts = if query.blank?
+                 Contact.all
+               else
+                 Contact.search(query)
+               end
+
+    _pagy, contacts = pagy(contacts, items: params[:size])
     render json: contacts
   end
 
