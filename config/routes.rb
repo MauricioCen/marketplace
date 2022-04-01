@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :products, only: %i[index show]
   resources :addresses
   resources :contacts
+  resources :promotions, only: %i[index]
 end
