@@ -11,13 +11,13 @@ RSpec.describe 'promotions', type: :request do
     let!(:product_five) { create(:product, discount: 9, name: 'Teclado') }
     let!(:product_six) { create(:product, discount: 0, name: 'Mouse') }
 
-    it 'should return status code 200' do
+    it 'should return 5 promotions' do
       get '/promotions', params: { page: 1, size: 10 }
       payload = JSON.parse(response.body)
       expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
-    it 'should return 2 promotions ' do
+    it 'should return 2 promotions' do
       get '/promotions', params: { q: 'PC Gamer' }
       payload = JSON.parse(response.body)
       expect(payload.size).to eq(2)
