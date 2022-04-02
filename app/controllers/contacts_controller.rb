@@ -9,8 +9,8 @@ class ContactsController < ApplicationController
                  Contact.search(query)
                end
 
-    _pagy, contacts = pagy(contacts, items: params[:size])
-    render json: contacts
+    pagy, contacts = pagy(contacts, items: params[:size])
+    render json: contacts, meta: pagy_metadata(pagy)
   end
 
   def show

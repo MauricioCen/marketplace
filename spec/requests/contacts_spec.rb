@@ -9,14 +9,14 @@ RSpec.describe 'contacts', type: :request do
     let!(:contact_two) { create(:contact, name: 'Cristiana', last_name: 'Cen') }
     it 'should return status code 200' do
       get '/contacts', params: { page: 1, size: 5 }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['contacts']
       expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
 
     it 'should return 2 contacts' do
       get '/contacts', params: { q: 'Crist' }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['contacts']
       expect(payload.size).to eq(2)
       expect(response).to have_http_status(:ok)
     end
@@ -26,7 +26,7 @@ RSpec.describe 'contacts', type: :request do
     let!(:contact) { create(:contact) }
     it 'should return contact' do
       get "/contacts/#{contact.id}"
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['contact']
       expect(payload['id']).to eq(contact.id)
       expect(response).to have_http_status(:ok)
     end
@@ -38,7 +38,7 @@ RSpec.describe 'contacts', type: :request do
       body = { contact: { name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, phone_number: FFaker::PhoneNumber.phone_number,
                           secret_key: FFaker::Lorem.word, user_id: user.id } }
       post '/contacts', params: body
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['contact']
       expect(payload['name']).to eq(body[:contact][:name])
       expect(payload['last_name']).to eq(body[:contact][:last_name])
       expect(payload['phone_number']).to eq(body[:contact][:phone_number])
@@ -55,7 +55,7 @@ RSpec.describe 'contacts', type: :request do
       body = { contact: { name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, phone_number: FFaker::PhoneNumber.phone_number,
                           secret_key: FFaker::Lorem.word, user_id: user.id } }
       put "/contacts/#{contact.id}", params: body
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['contact']
       expect(payload['name']).to eq(body[:contact][:name])
       expect(payload['last_name']).to eq(body[:contact][:last_name])
       expect(payload['phone_number']).to eq(body[:contact][:phone_number])

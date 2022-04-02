@@ -10,8 +10,8 @@ module Categories
               else
                 promotions.search(filter)
               end
-      _pagy, products = pagy(query, items: params[:size])
-      render json: products
+      pagy, products = pagy(query, items: params[:size])
+      render json: products, meta: pagy_metadata(pagy)
     end
   end
 end

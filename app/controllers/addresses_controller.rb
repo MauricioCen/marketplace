@@ -2,8 +2,8 @@
 
 class AddressesController < ApplicationController
   def index
-    _pagy, addresses = pagy(Address.all, items: params[:size])
-    render json: addresses
+    pagy, addresses = pagy(Address.all, items: params[:size])
+    render json: addresses, meta: pagy_metadata(pagy)
   end
 
   def show

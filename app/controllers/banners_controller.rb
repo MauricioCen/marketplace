@@ -2,7 +2,7 @@
 
 class BannersController < ApplicationController
   def index
-    _pagy, banners = pagy(Banner.all, items: params[:size])
-    render json: banners
+    pagy, banners = pagy(Banner.all, items: params[:size])
+    render json: banners, meta: pagy_metadata(pagy)
   end
 end
