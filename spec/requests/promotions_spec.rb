@@ -13,13 +13,13 @@ RSpec.describe 'promotions', type: :request do
 
     it 'should return 5 promotions' do
       get '/promotions', params: { page: 1, size: 10 }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['products']
       expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
     it 'should return 2 promotions' do
       get '/promotions', params: { q: 'PC Gamer' }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['products']
       expect(payload.size).to eq(2)
       expect(response).to have_http_status(:ok)
     end

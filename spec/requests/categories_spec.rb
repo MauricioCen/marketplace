@@ -8,7 +8,7 @@ RSpec.describe 'Categories', type: :request do
 
     it 'should return status code 200' do
       get '/categories', params: { page: 1, size: 5 }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['categories']
       expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end

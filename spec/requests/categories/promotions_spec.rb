@@ -13,13 +13,13 @@ RSpec.describe 'categories/promotions', type: :request do
 
     it 'should return products' do
       get "/categories/#{category.id}/promotions", params: { page: 1, size: 10 }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['products']
       expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
     it 'should return 3 promotions' do
       get '/promotions', params: { q: 'Foco' }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['products']
       expect(payload.size).to eq(3)
       expect(response).to have_http_status(:ok)
     end

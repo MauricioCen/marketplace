@@ -8,8 +8,8 @@ class ProductsController < ApplicationController
                else
                  Product.search(query)
                end
-    _pagy, products = pagy(products, items: params[:size])
-    render json: products
+    pagy, products = pagy(products, items: params[:size])
+    render json: products, meta: pagy_metadata(pagy)
   end
 
   def show

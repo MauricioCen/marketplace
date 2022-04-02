@@ -8,7 +8,7 @@ RSpec.describe 'addresses', type: :request do
 
     it 'should return status code 200' do
       get '/addresses', params: { page: 1, size: 5 }
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['addresses']
       expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
@@ -18,7 +18,7 @@ RSpec.describe 'addresses', type: :request do
     let!(:address) { create(:address) }
     it 'should return address' do
       get "/addresses/#{address.id}"
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['address']
       expect(payload['id']).to eq(address.id)
       expect(response).to have_http_status(:ok)
     end
@@ -30,7 +30,7 @@ RSpec.describe 'addresses', type: :request do
       body = { address: { name: FFaker::Lorem.word, first_address: FFaker::Lorem.word, int_number: FFaker::Lorem.word, ext_number: FFaker::Lorem.word,
                           zip_code: FFaker::Lorem.word, references: FFaker::Lorem.paragraph, city: FFaker::Address.city, state: FFaker::Lorem.word, user_id: user.id } }
       post '/addresses', params: body
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['address']
       expect(payload['name']).to eq(body[:address][:name])
       expect(payload['first_address']).to eq(body[:address][:first_address])
       expect(payload['int_number']).to eq(body[:address][:int_number])
@@ -51,7 +51,7 @@ RSpec.describe 'addresses', type: :request do
       body = { address: { name: FFaker::Lorem.word, first_address: FFaker::Lorem.word, int_number: FFaker::Lorem.word, ext_number: FFaker::Lorem.word,
                           zip_code: FFaker::Lorem.word, references: FFaker::Lorem.paragraph, city: FFaker::Address.city, state: FFaker::Lorem.word, user_id: user.id } }
       put "/addresses/#{address.id}", params: body
-      payload = JSON.parse(response.body)
+      payload = JSON.parse(response.body)['address']
       expect(payload['name']).to eq(body[:address][:name])
       expect(payload['first_address']).to eq(body[:address][:first_address])
       expect(payload['int_number']).to eq(body[:address][:int_number])
