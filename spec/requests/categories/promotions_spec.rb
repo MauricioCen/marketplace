@@ -17,7 +17,7 @@ RSpec.describe 'categories/promotions', type: :request do
       expect(payload.size).to eq(5)
       expect(response).to have_http_status(:ok)
     end
-    it 'should return 2 promotions' do
+    it 'should return 3 promotions' do
       get '/promotions', params: { q: 'Foco' }
       payload = JSON.parse(response.body)
       expect(payload.size).to eq(3)
