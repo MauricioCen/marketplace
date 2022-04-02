@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'rails_admin/main#dashboard'
   resources :categories, only: %i[index] do
     resources :products, only: %i[index], controller: 'categories/products'
+    resources :promotions, only: %i[index], controller: 'categories/promotions'
   end
   resources :banners, only: %i[index]
   resources :products, only: %i[index show]

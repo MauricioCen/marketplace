@@ -16,6 +16,6 @@
 #  slug        :string
 #
 class ProductSerializer < ApplicationSerializer
-  attributes :id, :name, :description, :price, :discount, :stock, :slug
+  attributes :id, :name, :description, :price, :discount, :stock, :slug, :category_id
   belongs_to :category
 end
