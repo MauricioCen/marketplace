@@ -2,8 +2,8 @@
 
 class FavoritesController < ApplicationController
   def index
-    _pagy, favorites = pagy(Favorite.all, items: params[:size])
-    render json: favorites
+    pagy, favorites = pagy(Favorite.all, items: params[:size])
+    render json: favorites, meta: pagy_metadata(pagy)
   end
 
   def create
