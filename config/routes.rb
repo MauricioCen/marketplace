@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :addresses
   resources :contacts
   resources :promotions, only: %i[index]
+  resources :favorites, only: %i[index create destroy]
 end
