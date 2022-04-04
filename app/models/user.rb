@@ -23,4 +23,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :addresses, dependent: :destroy
   has_many :contacts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end
