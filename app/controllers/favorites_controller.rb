@@ -12,7 +12,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = User.find(params[:id])
+    favorite = Favorite.find(params[:id])
     favorite.destroy!
     render json: favorite, status: :no_content
   end

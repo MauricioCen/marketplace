@@ -28,11 +28,10 @@ RSpec.describe 'Favorites', type: :request do
   end
 
   describe 'DELETE /favorites/:id' do
-    let!(:user) { create(:user) }
-    let!(:product) { create(:product) }
+    let!(:favorite) { create(:favorite) }
 
-    it 'should delete product' do
-      delete "/favorites/#{user.id}"
+    it 'should delete favorite' do
+      delete "/favorites/#{favorite.id}"
       expect(response).to have_http_status(:no_content)
     end
   end
