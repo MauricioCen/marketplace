@@ -22,8 +22,8 @@ RSpec.describe 'Favorites', type: :request do
       body = { favorite: { user_id: user.id, product_id: product.id } }
       post '/favorites', params: body
       payload = JSON.parse(response.body)['favorite']
-      expect(payload['id']).to eq(body[:favorite][:user_id])
-      expect(payload['id']).to eq(body[:favorite][:product_id])
+      expect(payload['user']['id']).to eq(body[:favorite][:user_id])
+      expect(payload['product']['id']).to eq(body[:favorite][:product_id])
     end
   end
 
