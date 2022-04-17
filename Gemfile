@@ -10,6 +10,7 @@ gem 'bootsnap', require: false
 gem 'caxlsx', '~> 3.2'
 gem 'devise', '~> 4.8'
 gem 'friendly_id', '~> 5.4.0'
+gem 'interactor', '~> 3.1'
 gem 'pagy', '~> 5.10'
 gem 'pg', '~> 1.3'
 gem 'pg_search', '~> 2.3'

@@ -2,14 +2,14 @@
 
 class PromotionsController < ApplicationController
   def index
-    promotions = Product.where('discount > 0')
-    filter = params[:q]
-    query = if filter.blank?
-              promotions
-            else
-              promotions.search(filter)
-            end
-    pagy, products = pagy(query, items: params[:size])
+    index_ctx = Promotions::Index.call(params: index_params.to_h)
+    pagy, products = pagy(index_ctx.query, items: params[:size])
     render json: products, meta: pagy_metadata(pagy)
+  end
+
+  private
+
+  def index_params
+    params.permit(:q)
   end
 end
