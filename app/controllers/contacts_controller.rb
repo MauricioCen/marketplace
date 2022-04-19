@@ -2,14 +2,8 @@
 
 class ContactsController < ApplicationController
   def index
-    query = params[:q]
-    contacts = if query.blank?
-                 Contact.all
-               else
-                 Contact.search(query)
-               end
-
-    pagy, contacts = pagy(contacts, items: params[:size])
+    index_ctx = Contacts::Index.call(params: index_params.to_h)
+    pagy, contacts = pagy(index_ctx.query, items: params[:size])
     render json: contacts, meta: pagy_metadata(pagy)
   end
 
@@ -43,5 +37,9 @@ class ContactsController < ApplicationController
 
   def update_params
     params.require(:contact).permit(:name, :last_name, :phone_number, :secret_key, :user_id)
+  end
+
+  def index_params
+    params.permit(:q)
   end
 end
