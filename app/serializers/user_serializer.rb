@@ -20,4 +20,5 @@ class UserSerializer < ApplicationSerializer
   attributes :id, :name, :last_name, :email, :phone_number
   has_many :addresses
   has_many :contacts
+  has_one :avatar
 end

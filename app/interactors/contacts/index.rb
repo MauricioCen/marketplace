@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-module Promotions
+module Contacts
   class Index
     include Interactor
 
     def call
-      context.query = filter? ? promotions.search(filter) : promotions
+      context.query = filter? ? contacts.search(filter) : contacts
     end
 
     private
 
-    def promotions
-      Product.where('discount > 0')
+    def contacts
+      Contact.all
     end
 
     def filter

@@ -4,6 +4,7 @@ module Categories
   module Products
     class Index
       include Interactor
+
       def call
         context.query = filter? ?  promotions.search(filter) : promotions
       end

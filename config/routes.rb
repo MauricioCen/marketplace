@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :promotions, only: %i[index]
   resources :favorites, only: %i[index create destroy]
+  resources :users, only: [] do
+    resource :avatar, only: %i[create update destroy], controller: 'users/avatar'
+  end
 end

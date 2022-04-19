@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_03_190116) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_17_192555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_03_190116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_assets_on_product_id"
+  end
+
+  create_table "avatars", force: :cascade do |t|
+    t.text "url"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_avatars_on_user_id"
   end
 
   create_table "banners", force: :cascade do |t|
@@ -105,6 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_03_190116) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "assets", "products"
+  add_foreign_key "avatars", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
