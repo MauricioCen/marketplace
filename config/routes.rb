@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resource :avatar, only: %i[create update destroy], controller: 'users/avatar'
   end
+  resources :informations, only: %i[show]
 end
