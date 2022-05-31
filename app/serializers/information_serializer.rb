@@ -13,5 +13,5 @@
 #  updated_at   :datetime         not null
 #
 class InformationSerializer < ApplicationSerializer
-  attributes :id, :description, :phone_number, :email
+  attributes :id, :name, :description, :phone_number, :email
 end
